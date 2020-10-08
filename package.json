@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_mysql",
+  "version": "1.0.0",
+  "description": "Building RESTful Api with Nodejs and MySQL DB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch src src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anapaulaoliva/nodeJS_MySQL.git"
+  },
+  "author": "Ana Paula Oliva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anapaulaoliva/nodeJS_MySQL/issues"
+  },
+  "homepage": "https://github.com/anapaulaoliva/nodeJS_MySQL#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
