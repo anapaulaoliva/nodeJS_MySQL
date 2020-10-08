@@ -29,13 +29,28 @@ mysqlConnection.connect((err)=> {
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
-/*** Creating GET Router ***/
+/*** Creating GET Router to get learners db ***/
 app.get('/learners', (req, res) => {
-    mysqlConnection.query('SELECT * FROM learners.learner_details', (err, rows, fields) => {
-        if( !err )
-            res.send(rows);
-        else
-            console.log(err);
+    mysqlConnection.query(
+        'SELECT * FROM learners.learner_details',
+        (err, rows, fields) => {
+            
+            if( !err )
+                res.send(rows);
+            else
+                console.log(err);
     })
 });
 
+/*** Creating Router to GET learner details from MySQL db ***/
+app.get('/learners/:id', (req, res) => {
+    mysqlConnection.query(
+        'SELECT * FROM learners.learner_details WHERE learner_id = ?',
+        [req.params.id],
+        (err, rows, fields) => {
+            if( !err )
+                res.send(rows);
+            else
+                console.log(err);
+    })
+});
