@@ -2,8 +2,9 @@ const mysql = require('mysql');
 const express = require('express');
 const bodyparser = require('body-parser');
 
+
+/*** Configuring express server ***/
 const app = express();
-//Configuring express server
 app.use(bodyparser.json());
 
 /*Create a connection with MySQL database using the createConnection function
@@ -26,6 +27,15 @@ mysqlConnection.connect((err)=> {
 //Specifying the port we will be sending our requests to the server.
 //PORT ENVIRONMENT VARIABLE
 const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listening on port ${port}...`))
+app.listen(port, () => console.log(`Listening on port ${port}...`));
 
+/*** Creating GET Router ***/
+app.get('/learners', (req, res) => {
+    mysqlConnection.query('SELECT * FROM learners.learner_details', (err, rows, fields) => {
+        if( !err )
+            res.send(rows);
+        else
+            console.log(err);
+    })
+});
 
