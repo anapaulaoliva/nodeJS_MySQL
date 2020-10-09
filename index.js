@@ -76,8 +76,18 @@ app.put('/learners', (req, res) => {
     var sql = "SET @learner_id = ?;SET @learner_name = ?;SET @learner_email = ?;SET @course_id = ?; CALL learners.learner_create_update(@learner_id,@learner_name,@learner_email,@course_id);";
     mysqlConnection.query(sql, [learner.learner_id, learner.learner_name, learner.learner_email, learner.course_id], (err, rows, fields) => {
         if ( !err )
-            res.send('Learner Details Updated Successfully');
+            res.send('Learner Details Updated Successfully!');
         else
             console.log(err);
         })
+});
+
+/*** Router to DELETE user details ***/
+app.delete('/learners/:id', (req,res) => {
+    mysqlConnection.query('DELETE FROM learners.learner_details WHERE learner_id = ?', [req.params.id], (err, rows, fields) => {
+        if( !err )
+            res.send('Learner Record Deleted successfully!');
+        else
+            console.log(err);
+    })
 });
