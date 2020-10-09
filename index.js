@@ -59,10 +59,7 @@ app.get('/learners/:id', (req, res) => {
 app.post('/learners', (req, res) => {
     let learner = req.body;
     var sql = "SET @learner_id=?;SET @learner_name=?;SET @learner_email=?; SET @course_id=?; CALL learners.learner_create_update(@learner_id,@learner_name,@learner_email, @course_id);";
-    mysqlConnection.query(
-        sql, 
-        [learner.learner_id, learner.learner_name, learner.learner_email, learner.course_id],
-        (err, rows, fields) => {
+    mysqlConnection.query(sql, [learner.learner_id, learner.learner_name, learner.learner_email, learner.course_id], (err, rows, fields) => {
             if( !err )
                 rows.forEach(element => {
             if( element.constructor == Array )
@@ -71,4 +68,16 @@ app.post('/learners', (req, res) => {
             else 
                 console.log(err);
             })
+});
+
+/*** Router to UPDATE ***/
+app.put('/learners', (req, res) => {
+    let learner = req.body;
+    var sql = "SET @learner_id = ?;SET @learner_name = ?;SET @learner_email = ?;SET @course_id = ?; CALL learners.learner_create_update(@learner_id,@learner_name,@learner_email,@course_id);";
+    mysqlConnection.query(sql, [learner.learner_id, learner.learner_name, learner.learner_email, learner.course_id], (err, rows, fields) => {
+        if ( !err )
+            res.send('Learner Details Updated Successfully');
+        else
+            console.log(err);
+        })
 });
