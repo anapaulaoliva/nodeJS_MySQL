@@ -54,3 +54,21 @@ app.get('/learners/:id', (req, res) => {
                 console.log(err);
     })
 });
+
+/*** Creating Router to POST ***/
+app.post('/learners', (req, res) => {
+    let learner = req.body;
+    var sql = "SET @learner_id=?;SET @learner_name=?;SET @learner_email=?; SET @course_id=?; CALL learners.learner_create_update(@learner_id,@learner_name,@learner_email, @course_id);";
+    mysqlConnection.query(
+        sql, 
+        [learner.learner_id, learner.learner_name, learner.learner_email, learner.course_id],
+        (err, rows, fields) => {
+            if( !err )
+                rows.forEach(element => {
+            if( element.constructor == Array )
+                res.send('New Learner ID : ' + element[0].learner_id);
+            });
+            else 
+                console.log(err);
+            })
+});
