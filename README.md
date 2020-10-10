@@ -32,3 +32,12 @@ npm i -g nodemon
 ```
 nodemon index.js
 ```
+![nodemon](https://user-images.githubusercontent.com/56927809/95644696-00c50100-0a7e-11eb-88f4-46e8e6985894.JPG)
+
+#### Consuming API 
+
+![postman](https://user-images.githubusercontent.com/56927809/95644744-3ff35200-0a7e-11eb-9d18-1bd8aa737dcc.JPG)
+
+#### MySQL Workbench 
+
+![sql](https://user-images.githubusercontent.com/56927809/95644811-c445d500-0a7e-11eb-8291-b4cd2802ae76.JPG)
