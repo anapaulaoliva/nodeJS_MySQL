@@ -28,3 +28,7 @@ npm i --s body-parser
 ```
 npm i -g nodemon
 ```
+
+```
+nodemon index.js
+```
