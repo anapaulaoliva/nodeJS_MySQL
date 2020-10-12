@@ -1,5 +1,14 @@
 # Building a CRUD Application with MySQL and Node.JS
 
+| Route          | Method       | Type         | Description              |
+| :------------- | :----------: | -----------: | -----------------------: |
+|  /learners     | GET          | JSON         | Get all Learners data    |
+| /learners{id}  | GET          | JSON         | Get a single id's data   |
+| /learners      | POST         | JSON         | Insert new record into db|
+| /learners      | PUT          | JSON         | Update new record into db|
+| /learners{id}  | DELETE       | JSON         | Delete a single id's data|
+
+
 ### Resources 
 
 - [Angular Forms Guide](https://angular.io/guide/forms-overview)
