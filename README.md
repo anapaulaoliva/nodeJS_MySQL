@@ -37,7 +37,10 @@ npm i --s body-parser
 ```
 npm i -g nodemon
 ```
-
+##### Running this repository
+```
+npm install
+```
 ```
 nodemon index.js
 ```
